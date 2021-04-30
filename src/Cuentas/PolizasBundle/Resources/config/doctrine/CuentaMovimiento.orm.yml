@@ -1,0 +1,67 @@
+Cuentas\PolizasBundle\Entity\CuentaMovimiento:
+    type: entity
+    table: cuenta_movimiento
+    indexes:
+        fk_Cuenta_Movimiento_Cuenta_Cobrar1_idx:
+            columns:
+                - Cuenta_Cobrar_idCuenta
+    uniqueConstraints:
+        movimiento_docnum_UNIQUE:
+            columns:
+                - movimiento_docnum
+    id:
+        idmovimiento:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idMovimiento
+            generator:
+                strategy: IDENTITY
+    fields:
+        movimientoDocnum:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: movimiento_docnum
+        movimientoFecha:
+            type: date
+            nullable: false
+            column: movimiento_fecha
+        movimientoConcepto:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: movimiento_concepto
+        movimientoDebe:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: movimiento_debe
+        movimientoHaber:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: movimiento_haber
+    manyToOne:
+        cuentaCobrarIdcuenta:
+            targetEntity: CuentaCobrar
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Cuenta_Cobrar_idCuenta:
+                    referencedColumnName: idCuenta
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

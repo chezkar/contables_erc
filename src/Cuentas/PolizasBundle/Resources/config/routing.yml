@@ -1,3 +1,15 @@
+polizas_cuentacobrar:
+        resource: "@PolizasBundle/Resources/config/routing/cuentacobrar.yml"
+        prefix:   /cuentacobrar
+
+polizas_activo:
+        resource: "@PolizasBundle/Resources/config/routing/activo.yml"
+        prefix:   /activo
+
+polizas_cliente:
+    resource: "@PolizasBundle/Resources/config/routing/cliente.yml"
+    prefix:   /cliente
+
 polizas_homepage:
     path:     /
     defaults: { _controller: PolizasBundle:Default:index }

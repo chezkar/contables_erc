@@ -1,0 +1,42 @@
+Cuentas\PolizasBundle\Entity\CuentaCobrar:
+    type: entity
+    table: cuenta_cobrar
+    indexes:
+        fk_Cuenta_Cliente1_idx:
+            columns:
+                - Cliente_idCliente
+        fk_Cuenta_Cobrar_Activo1_idx:
+            columns:
+                - Activo_idActivo
+    id:
+        idcuenta:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idCuenta
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        clienteIdcliente:
+            targetEntity: Cliente
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Cliente_idCliente:
+                    referencedColumnName: idCliente
+            orphanRemoval: false
+        activoIdactivo:
+            targetEntity: Activo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Activo_idActivo:
+                    referencedColumnName: idActivo
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

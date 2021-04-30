@@ -1,0 +1,24 @@
+cuentacobrar_index:
+    path:     /
+    defaults: { _controller: "PolizasBundle:CuentaCobrar:index" }
+    methods:  GET
+
+cuentacobrar_show:
+    path:     /{idcuenta}/show
+    defaults: { _controller: "PolizasBundle:CuentaCobrar:show" }
+    methods:  GET
+
+cuentacobrar_new:
+    path:     /new
+    defaults: { _controller: "PolizasBundle:CuentaCobrar:new" }
+    methods:  [GET, POST]
+
+cuentacobrar_edit:
+    path:     /{idcuenta}/edit
+    defaults: { _controller: "PolizasBundle:CuentaCobrar:edit" }
+    methods:  [GET, POST]
+
+cuentacobrar_delete:
+    path:     /{idcuenta}/delete
+    defaults: { _controller: "PolizasBundle:CuentaCobrar:delete" }
+    methods:  DELETE

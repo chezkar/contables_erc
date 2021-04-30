@@ -1,0 +1,24 @@
+activo_index:
+    path:     /
+    defaults: { _controller: "PolizasBundle:Activo:index" }
+    methods:  GET
+
+activo_show:
+    path:     /{idactivo}/show
+    defaults: { _controller: "PolizasBundle:Activo:show" }
+    methods:  GET
+
+activo_new:
+    path:     /new
+    defaults: { _controller: "PolizasBundle:Activo:new" }
+    methods:  [GET, POST]
+
+activo_edit:
+    path:     /{idactivo}/edit
+    defaults: { _controller: "PolizasBundle:Activo:edit" }
+    methods:  [GET, POST]
+
+activo_delete:
+    path:     /{idactivo}/delete
+    defaults: { _controller: "PolizasBundle:Activo:delete" }
+    methods:  DELETE

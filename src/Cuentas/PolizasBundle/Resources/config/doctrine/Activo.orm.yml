@@ -1,0 +1,80 @@
+Cuentas\PolizasBundle\Entity\Activo:
+    type: entity
+    table: activo
+    id:
+        idactivo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idActivo
+            generator:
+                strategy: IDENTITY
+    fields:
+        activoTipo:
+            type: array
+            nullable: false
+            length: 0
+            options:
+                fixed: false
+                default: '{"ac": "activo_corriente", "anc": "activo_no_corriente"}'
+            column: activo_tipo
+        activoTipoCategoria:
+            type: array
+            nullable: false
+            length: 0
+            options:
+                fixed: false
+                default: '{"cb": "caja_banco", "ppe": "propiedad_planta_equipo", "da":  "depreciacion_acum"}'
+            column: activo_tipo_categoria
+        activoTipoSubcategoria:
+            type: array
+            nullable: false
+            length: 0
+            options:
+                fixed: false
+                default: '{"cg":"caja_general","bnc": "banco_qtz", "inm": "inmueble", "vhc": "vehiculo", "dav": "deprecion_acum_vehiculo", "dame": "deprecion_acum_mob_eqp"}'
+            column: activo_tipo_subcategoria
+        activoNombre:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: activo_nombre
+        activoCaracteristica:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: activo_caracteristica
+        activoValor:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: activo_valor
+        insertedAt:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: inserted_at
+        updatedAt:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: updated_at
+    manyToMany:
+        clienteIdcliente:
+            targetEntity: Cliente
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: activoIdactivo
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cuentacobrars list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idcuenta</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cuentaCobrar in cuentaCobrars %}
+            <tr>
+                <td><a href="{{ path('cuentacobrar_show', { 'idcuenta': cuentaCobrar.idcuenta }) }}">{{ cuentaCobrar.idcuenta }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cuentacobrar_show', { 'idcuenta': cuentaCobrar.idcuenta }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cuentacobrar_edit', { 'idcuenta': cuentaCobrar.idcuenta }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cuentacobrar_new') }}">Create a new cuentaCobrar</a>
+        </li>
+    </ul>
+{% endblock %}

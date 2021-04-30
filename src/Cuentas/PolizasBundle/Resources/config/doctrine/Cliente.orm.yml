@@ -1,0 +1,93 @@
+Cuentas\PolizasBundle\Entity\Cliente:
+    type: entity
+    table: cliente
+    uniqueConstraints:
+        cliente_nit_UNIQUE:
+            columns:
+                - cliente_nit
+    id:
+        idcliente:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idCliente
+            generator:
+                strategy: IDENTITY
+    fields:
+        clienteNit:
+            type: string
+            nullable: false
+            length: 12
+            options:
+                fixed: false
+            column: cliente_nit
+        clienteNombre:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: cliente_nombre
+        clienteApellido:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: cliente_apellido
+        clienteNombreComercial:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: cliente_nombre_comercial
+        clienteDireccionParticular:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: cliente_direccion_particular
+        clienteTelefonoParticular:
+            type: string
+            nullable: false
+            length: 12
+            options:
+                fixed: false
+            column: cliente_telefono_particular
+        clienteDireccionComercial:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: cliente_direccion_comercial
+        clienteTelefonoComercial:
+            type: string
+            nullable: false
+            length: 12
+            options:
+                fixed: false
+            column: cliente_telefono_comercial
+    manyToMany:
+        activoIdactivo:
+            targetEntity: Activo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: clienteIdcliente
+            joinTable:
+                name: cliente_has_activo
+                joinColumns:
+                    -
+                        name: Cliente_idCliente
+                        referencedColumnName: idCliente
+                inverseJoinColumns:
+                    -
+                        name: Activo_idActivo
+                        referencedColumnName: idActivo
+            orderBy: null
+    lifecycleCallbacks: {  }

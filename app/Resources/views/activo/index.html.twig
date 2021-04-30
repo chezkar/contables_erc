@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Activos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idactivo</th>
+                <th>Activotipo</th>
+                <th>Activotipocategoria</th>
+                <th>Activotiposubcategoria</th>
+                <th>Activonombre</th>
+                <th>Activocaracteristica</th>
+                <th>Activovalor</th>
+                <th>Insertedat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activo in activos %}
+            <tr>
+                <td><a href="{{ path('activo_show', { 'idactivo': activo.idactivo }) }}">{{ activo.idactivo }}</a></td>
+                <td>{% if activo.activoTipo %}{{ activo.activoTipo|join(', ') }}{% endif %}</td>
+                <td>{% if activo.activoTipoCategoria %}{{ activo.activoTipoCategoria|join(', ') }}{% endif %}</td>
+                <td>{% if activo.activoTipoSubcategoria %}{{ activo.activoTipoSubcategoria|join(', ') }}{% endif %}</td>
+                <td>{{ activo.activoNombre }}</td>
+                <td>{{ activo.activoCaracteristica }}</td>
+                <td>{{ activo.activoValor }}</td>
+                <td>{% if activo.insertedAt %}{{ activo.insertedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if activo.updatedAt %}{{ activo.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('activo_show', { 'idactivo': activo.idactivo }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('activo_edit', { 'idactivo': activo.idactivo }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('activo_new') }}">Create a new activo</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Activo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idactivo</th>
+                <td>{{ activo.idactivo }}</td>
+            </tr>
+            <tr>
+                <th>Activotipo</th>
+                <td>{% if activo.activoTipo %}{{ activo.activoTipo|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Activotipocategoria</th>
+                <td>{% if activo.activoTipoCategoria %}{{ activo.activoTipoCategoria|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Activotiposubcategoria</th>
+                <td>{% if activo.activoTipoSubcategoria %}{{ activo.activoTipoSubcategoria|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Activonombre</th>
+                <td>{{ activo.activoNombre }}</td>
+            </tr>
+            <tr>
+                <th>Activocaracteristica</th>
+                <td>{{ activo.activoCaracteristica }}</td>
+            </tr>
+            <tr>
+                <th>Activovalor</th>
+                <td>{{ activo.activoValor }}</td>
+            </tr>
+            <tr>
+                <th>Insertedat</th>
+                <td>{% if activo.insertedAt %}{{ activo.insertedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if activo.updatedAt %}{{ activo.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('activo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('activo_edit', { 'idactivo': activo.idactivo }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
