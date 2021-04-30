@@ -24,23 +24,23 @@ class Activo
     /**
      * @var array
      *
-     * @ORM\Column(name="activo_tipo", type="array", length=0, nullable=false, options={"default"="{'ac': 'activo_corriente', 'anc': 'activo_no_corriente'}"})
+     * @ORM\Column(name="activo_tipo", type="array", length=0, nullable=false, options={"default"="{""ac"": ""activo_corriente"", ""anc"": ""activo_no_corriente""}"})
      */
-    private $activoTipo;
+    private $activoTipo = '{"ac": "activo_corriente", "anc": "activo_no_corriente"}';
 
     /**
      * @var array
      *
-     * @ORM\Column(name="activo_tipo_categoria", type="array", length=0, nullable=false, options={"default"="{'cb': 'caja_banco', 'ppe': 'propiedad_planta_equipo', 'da':  'depreciacion_acum'}"})
+     * @ORM\Column(name="activo_tipo_categoria", type="array", length=0, nullable=false, options={"default"="{""cb"": ""caja_banco"", ""ppe"": ""propiedad_planta_equipo"", ""da"":  ""depreciacion_acum""}"})
      */
-    private $activoTipoCategoria;
+    private $activoTipoCategoria = '{"cb": "caja_banco", "ppe": "propiedad_planta_equipo", "da":  "depreciacion_acum"}';
 
     /**
      * @var array
      *
-     * @ORM\Column(name="activo_tipo_subcategoria", type="array", length=0, nullable=false, options={"default"="{'cg':'caja_general','bnc': 'banco_qtz', 'inm': 'inmueble', 'vhc': 'vehiculo', 'dav': 'deprecion_acum_vehiculo', 'dame': 'deprecion_acum_mob_eqp'}"})
+     * @ORM\Column(name="activo_tipo_subcategoria", type="array", length=0, nullable=false, options={"default"="{""cg"":""caja_general"",""bnc"": ""banco_qtz"", ""inm"": ""inmueble"", ""vhc"": ""vehiculo"", ""dav"": ""deprecion_acum_vehiculo"", ""dame"": ""deprecion_acum_mob_eqp""}"})
      */
-    private $activoTipoSubcategoria;
+    private $activoTipoSubcategoria = '{"cg":"caja_general","bnc": "banco_qtz", "inm": "inmueble", "vhc": "vehiculo", "dav": "deprecion_acum_vehiculo", "dame": "deprecion_acum_mob_eqp"}';
 
     /**
      * @var string

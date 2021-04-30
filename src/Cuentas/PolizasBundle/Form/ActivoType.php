@@ -10,6 +10,12 @@ use Doctrine\ORM\EntityRepository;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+
+use Symfony\Component\Form\CallbackTransformer;
+
+
 class ActivoType extends AbstractType
 {
     private $id;
@@ -27,7 +33,7 @@ class ActivoType extends AbstractType
         $this->id = $options['idcliente'];
 
         $builder
-            ->add('activoTipo')
+            ->add('activoTipo', CollectionType::class, ['entry_type' => TextType::class, 'allow_add' => true, 'allow_delete' =>true])
             ->add('activoTipoCategoria')
             ->add('activoTipoSubcategoria')
             ->add('activoNombre')
@@ -40,6 +46,17 @@ class ActivoType extends AbstractType
                         ->where('u.idcliente = ?1')
                         ->setParameter(1, $this->id);
             }])
+        ;
+
+        $builder->get('activoTipo')
+            ->addModelTransformer(new CallbackTransformer(
+                function ($labelsAsString) {
+                    return explode(', ', $labelsAsString);
+                },
+                function ($labelsAsArray) {
+                    return implode(', ', $labelsAsArray);
+                }
+            ))
         ;
     }/**
      * {@inheritdoc}
@@ -58,6 +75,18 @@ class ActivoType extends AbstractType
     public function getBlockPrefix()
     {
         return 'cuentas_polizasbundle_activo';
+    }
+
+    /**
+     * @param mixed $value
+     * @return array
+     */
+    public function reverseTransform($value)
+    {
+        if (is_array($value)) {
+            return implode(',', $value);
+        }
+        return $value;
     }
 
 
