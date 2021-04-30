@@ -1,3 +1,11 @@
+polizas:
+    resource: "@PolizasBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tema:
+    resource: "@TemaBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

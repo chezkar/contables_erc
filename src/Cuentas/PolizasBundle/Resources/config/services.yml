@@ -1,0 +1,4 @@
+services:
+#    polizas.example:
+#        class: Cuentas\PolizasBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
