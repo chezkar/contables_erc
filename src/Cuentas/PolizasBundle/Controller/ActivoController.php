@@ -16,14 +16,18 @@ class ActivoController extends Controller
      * Lists all activo entities.
      *
      */
-    public function indexAction()
+    public function indexAction($idcliente)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $activos = $em->getRepository('PolizasBundle:Activo')->findAll();
+        $activos = $em->createQuery('
+         SELECT at FROM PolizasBundle:Activo at
+         WHERE at.clienteIdcliente = :c
+        ')->setParameters(['c' => $idcliente]);
 
         return $this->render('activo/index.html.twig', array(
-            'activos' => $activos,
+            'activos'   => $activos,
+            'idcliente' => $idcliente,
         ));
     }
 
@@ -31,10 +35,10 @@ class ActivoController extends Controller
      * Creates a new activo entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $idcliente)
     {
         $activo = new Activo();
-        $form = $this->createForm('Cuentas\PolizasBundle\Form\ActivoType', $activo);
+        $form = $this->createForm('Cuentas\PolizasBundle\Form\ActivoType', $activo, ['idcliente' => $idcliente]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -1,42 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Activos list</h1>
+{% block title_button %}
+    <h1 class="h3 mb-0 text-gray-800">Activos Cliente</h1>
+    <a href="{{ path('activo_new', { 'idcliente': idcliente }) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-user-plus fa-sm text-white-50"></i> Nuevo</a>
+{% endblock %}
 
-    <table>
+{% block body %}
+<div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
             <tr>
-                <th>Idactivo</th>
-                <th>Activotipo</th>
-                <th>Activotipocategoria</th>
-                <th>Activotiposubcategoria</th>
-                <th>Activonombre</th>
-                <th>Activocaracteristica</th>
-                <th>Activovalor</th>
-                <th>Insertedat</th>
-                <th>Updatedat</th>
+                <th>Tipo</th>
+                <th>Categoria</th>
+                <th>Subcategoria</th>
+                <th>Nombre</th>
+                <th>Caracteristicas</th>
+                <th>Valor</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for activo in activos %}
             <tr>
-                <td><a href="{{ path('activo_show', { 'idactivo': activo.idactivo }) }}">{{ activo.idactivo }}</a></td>
                 <td>{% if activo.activoTipo %}{{ activo.activoTipo|join(', ') }}{% endif %}</td>
                 <td>{% if activo.activoTipoCategoria %}{{ activo.activoTipoCategoria|join(', ') }}{% endif %}</td>
                 <td>{% if activo.activoTipoSubcategoria %}{{ activo.activoTipoSubcategoria|join(', ') }}{% endif %}</td>
                 <td>{{ activo.activoNombre }}</td>
                 <td>{{ activo.activoCaracteristica }}</td>
                 <td>{{ activo.activoValor }}</td>
-                <td>{% if activo.insertedAt %}{{ activo.insertedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if activo.updatedAt %}{{ activo.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('activo_show', { 'idactivo': activo.idactivo }) }}">show</a>
+                            <a href="{{ path('activo_show', { 'idactivo': activo.idactivo }) }}">VER</a>
                         </li>
                         <li>
-                            <a href="{{ path('activo_edit', { 'idactivo': activo.idactivo }) }}">edit</a>
+                            <a href="{{ path('activo_edit', { 'idactivo': activo.idactivo }) }}">EDITAR</a>
                         </li>
                     </ul>
                 </td>
@@ -44,10 +42,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('activo_new') }}">Create a new activo</a>
-        </li>
-    </ul>
 {% endblock %}

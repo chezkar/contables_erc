@@ -1,5 +1,5 @@
 activo_index:
-    path:     /
+    path:     /{idcliente}/
     defaults: { _controller: "PolizasBundle:Activo:index" }
     methods:  GET
 
@@ -9,7 +9,7 @@ activo_show:
     methods:  GET
 
 activo_new:
-    path:     /new
+    path:     /{idcliente}/new
     defaults: { _controller: "PolizasBundle:Activo:new" }
     methods:  [GET, POST]
 

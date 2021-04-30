@@ -13,7 +13,16 @@ class ClienteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('clienteNit')->add('clienteNombre')->add('clienteApellido')->add('clienteNombreComercial')->add('clienteDireccionParticular')->add('clienteTelefonoParticular')->add('clienteDireccionComercial')->add('clienteTelefonoComercial')->add('activoIdactivo');
+        $builder
+            ->add('clienteNit', null, ['label' => 'NIT', 'attr' => ['class' => 'form-control form-control-user']])
+            ->add('clienteNombre', null, ['label' => 'Nombres', 'attr' => ['class' => 'form-control form-control-user']])
+            ->add('clienteApellido', null, ['label' => 'Apellidos', 'attr' => ['class' => 'form-control form-control-user']])
+            ->add('clienteNombreComercial', null, ['label' => 'Nombre Comercial', 'attr' => ['class' => 'form-control form-control-user']])
+            ->add('clienteDireccionParticular', null, ['label' => 'Dirección Residencia', 'attr' => ['class' => 'form-control form-control-user']])
+            ->add('clienteTelefonoParticular', null, ['label' => 'Celular', 'attr' => ['class' => 'form-control form-control-user']])
+            ->add('clienteDireccionComercial', null, ['label' => 'Dirección Comercial', 'attr' => ['class' => 'form-control form-control-user']])
+            ->add('clienteTelefonoComercial', null, ['label' => 'PBX', 'attr' => ['class' => 'form-control form-control-user']])
+            ;
     }/**
      * {@inheritdoc}
      */

@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Cliente</h1>
+{% block title_button %}
+    <h1 class="h3 mb-0 text-gray-800">Clientes</h1>
+    <a href="{{ path('cliente_index') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-undo fa-sm text-white-50"></i> Regresar</a>
+{% endblock %}
 
+{% block body %}
     <table>
         <tbody>
-            <tr>
-                <th>Idcliente</th>
-                <td>{{ cliente.idcliente }}</td>
-            </tr>
             <tr>
                 <th>Clientenit</th>
                 <td>{{ cliente.clienteNit }}</td>
@@ -46,14 +45,21 @@
 
     <ul>
         <li>
-            <a href="{{ path('cliente_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('cliente_edit', { 'idcliente': cliente.idcliente }) }}">Edit</a>
+            <a href="{{ path('cliente_edit', { 'idcliente': cliente.idcliente }) }}" class="btn btn-info btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-pen"></i>
+                </span>
+                <span class="text">EDITAR</span>
+            </a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <button type="submit" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-trash-alt"></i>
+                    </span>
+                    <span class="text">ELIMINAR</span>
+                </button>
             {{ form_end(delete_form) }}
         </li>
     </ul>
